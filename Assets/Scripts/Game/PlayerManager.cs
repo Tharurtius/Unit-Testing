@@ -6,32 +6,64 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public int speed;
+    public static Vector2 playerPos;
+    public GameObject sideBullet;
+    public float sideBulletCooldown;
+    private float sideBulletCurrentCooldown;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        sideBulletCurrentCooldown = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //get controls and move
         Vector2 move = Vector2.zero;
-        if (Input.GetAxis("Vertical") != 0)
+        move.y = Input.GetAxis("Vertical");
+        move.x = Input.GetAxis("Horizontal");
+        Move(move);
+        
+        //move position back towards center of screen
+        //Debug.Log(Camera.main.WorldToViewportPoint(transform.position));
+        Vector3 edge = Camera.main.WorldToViewportPoint(transform.position);
+        Vector3 initialPos = edge;
+        edge.x = Mathf.Clamp(edge.x, 0.1f, 0.9f);
+        edge.y = Mathf.Clamp(edge.y, 0.1f, 0.9f);
+        //Debug.Log(edge);
+        if (edge.x != initialPos.x || edge.y != initialPos.y)
         {
-            move.y = Input.GetAxis("Vertical");
-        }
-
-        if (Input.GetAxis("Horizontal") != 0)
-        {
-            move.x = Input.GetAxis("Horizontal");
+            transform.position = Camera.main.ViewportToWorldPoint(edge);
         }
         
-        Move(move);
+        //static player position
+        playerPos = transform.position;
+        
+        //fires side bullets on cooldown
+        sideBulletCurrentCooldown -= Time.deltaTime;
+        if (sideBulletCurrentCooldown <= 0)
+        {
+            sideBulletCurrentCooldown = sideBulletCooldown;
+            FireLeftBullet();
+            FireRightBullet();
+        }
     }
 
     public void Move(Vector2 input)
     {
         gameObject.transform.position += (Vector3)input * Time.deltaTime * speed;
+    }
+
+    public void FireLeftBullet()
+    {
+        Instantiate(sideBullet, transform.position, Quaternion.identity);
+    }
+
+    public void FireRightBullet()
+    {
+        GameObject bullet = Instantiate(sideBullet, transform.position, Quaternion.identity);
+        bullet.GetComponent<SideBullet>().MoveRight = true;
     }
 }
