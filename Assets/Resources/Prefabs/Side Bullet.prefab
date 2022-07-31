@@ -94,17 +94,17 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
   - {x: -0.5, y: 0}
-  - {x: -0.0014831182, y: 0.25378537}
-  - {x: 0.5090975, y: 0.0018923283}
-  - {x: -0.0024553835, y: -0.24902415}
-  - {x: -0.5000956, y: -0.0002541542}
+  - {x: 0, y: 0.25}
+  - {x: 0.5, y: 0}
+  - {x: 0, y: -0.25}
+  - {x: -0.5, y: 0}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -124,3 +124,5 @@ MonoBehaviour:
   MoveRight: 0
   speed: 5
   lifetime: 5
+  damage: 5
+  pierce: 2

@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public int speed;
+    public float hitpoints;
+    public float experience;
     public static Vector2 playerPos;
     public GameObject sideBullet;
     public float sideBulletCooldown;
@@ -65,5 +67,22 @@ public class PlayerManager : MonoBehaviour
     {
         GameObject bullet = Instantiate(sideBullet, transform.position, Quaternion.identity);
         bullet.GetComponent<SideBullet>().MoveRight = true;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            hitpoints -= 2;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("collide");
+        if (collision.gameObject.tag == "Experience")
+        {
+            Debug.Log("if tag");
+            experience++;
+            Destroy(collision.gameObject);
+        }
     }
 }

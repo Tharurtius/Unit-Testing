@@ -8,6 +8,9 @@ public class SideBullet : MonoBehaviour
     public bool MoveRight;
     public float speed;
     public float lifetime;
+    public float damage;
+    public int pierce;
+
     // Update is called once per frame
     private void Start()
     {
@@ -23,6 +26,10 @@ public class SideBullet : MonoBehaviour
         pos.x = speed * Time.deltaTime;
         transform.position += (Vector3)pos;
         lifetime -= Time.deltaTime;
+        if (pierce <= 0)
+        {
+            lifetime = 0;
+        }
         if (lifetime <= 0f)
         {
             Destroy(gameObject);
