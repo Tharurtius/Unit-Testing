@@ -30,15 +30,15 @@ public class PlayerManager : MonoBehaviour
         
         //move position back towards center of screen
         //Debug.Log(Camera.main.WorldToViewportPoint(transform.position));
-        Vector3 edge = Camera.main.WorldToViewportPoint(transform.position);
-        Vector3 initialPos = edge;
-        edge.x = Mathf.Clamp(edge.x, 0.1f, 0.9f);
-        edge.y = Mathf.Clamp(edge.y, 0.1f, 0.9f);
-        //Debug.Log(edge);
-        if (edge.x != initialPos.x || edge.y != initialPos.y)
-        {
-            transform.position = Camera.main.ViewportToWorldPoint(edge);
-        }
+        //Vector3 edge = Camera.main.WorldToViewportPoint(transform.position);
+        //Vector3 initialPos = edge;
+        //edge.x = Mathf.Clamp(edge.x, 0.1f, 0.9f);
+        //edge.y = Mathf.Clamp(edge.y, 0.1f, 0.9f);
+        ////Debug.Log(edge);
+        //if (edge.x != initialPos.x || edge.y != initialPos.y)
+        //{
+        //    transform.position = Camera.main.ViewportToWorldPoint(edge);
+        //}
         
         //static player position
         playerPos = transform.position;
@@ -68,19 +68,20 @@ public class PlayerManager : MonoBehaviour
         GameObject bullet = Instantiate(sideBullet, transform.position, Quaternion.identity);
         bullet.GetComponent<SideBullet>().MoveRight = true;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            hitpoints -= 2;
+            hitpoints -= 2 * Time.deltaTime;
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("collide");
+        //Debug.Log("collide");
         if (collision.gameObject.tag == "Experience")
         {
-            Debug.Log("if tag");
+            //Debug.Log("if tag");
             experience++;
             Destroy(collision.gameObject);
         }

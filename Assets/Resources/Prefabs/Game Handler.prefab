@@ -45,5 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 2891104011594433302, guid: b340efd3cc1bce64692737ef214eaeea, type: 3}
   enemyPrefab: {fileID: 40238357871967654, guid: 0d43ef02c7912894bb13839e0b8e4c49, type: 3}
+  expPrefab: {fileID: 7844584978677147552, guid: 689f058f8f3688a49bd1f8e6e0e759b6, type: 3}
+  bulletPrefab: {fileID: 5148177323756439472, guid: a60564d3e5764ae48b0066ae5443ea12, type: 3}
   spawnCooldown: 5
   spawnCurrentCooldown: 0

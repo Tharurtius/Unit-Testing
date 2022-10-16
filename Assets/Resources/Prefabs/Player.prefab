@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  hitpoints: 0
+  hitpoints: 10
   experience: 0
   sideBullet: {fileID: 5148177323756439472, guid: a60564d3e5764ae48b0066ae5443ea12, type: 3}
   sideBulletCooldown: 5

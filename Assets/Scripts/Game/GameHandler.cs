@@ -8,6 +8,8 @@ public class GameHandler : MonoBehaviour
 {
     [SerializeField] private PlayerManager playerPrefab;
     public GameObject enemyPrefab;
+    public GameObject expPrefab;
+    public GameObject bulletPrefab;
     public float spawnCooldown;
     public float spawnCurrentCooldown;
 
@@ -23,7 +25,22 @@ public class GameHandler : MonoBehaviour
 
     public PlayerManager GetPlayer()
     {
-        return Instantiate<PlayerManager>(playerPrefab);
+        return Instantiate(playerPrefab, Vector2.zero, Quaternion.identity);
+    }
+
+    public GameObject GetEnemy()
+    {
+        return Instantiate(enemyPrefab, Vector2.zero, Quaternion.identity);
+    }
+
+    public GameObject GetExperience()
+    {
+        return Instantiate(expPrefab, Vector3.zero, Quaternion.identity);
+    }
+
+    public GameObject GetBullet()
+    {
+        return Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity);
     }
 
     public void SpawnEnemy()
