@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sideBulletCurrentCooldown = 0;
+        sideBulletCurrentCooldown = 0.1f;
     }
 
     // Update is called once per frame

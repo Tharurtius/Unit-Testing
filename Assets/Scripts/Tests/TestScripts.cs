@@ -81,6 +81,7 @@ public class TestScripts
         enemy = _gameHandler.GetEnemy();
         float maxHP = player.hitpoints;
         enemy.transform.position = player.transform.position;
+        enemy.transform.position += new Vector3(0, 0.7f, 0);
         yield return new WaitForSeconds(0.1f);
         Assert.Less(player.hitpoints, maxHP);
     }
