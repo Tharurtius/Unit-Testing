@@ -10,13 +10,12 @@ public class TestScripts
     private PlayerManager player;
     private GameObject enemy;
     [SetUp]
-    public void Setup()
+        public void Setup()
     {
         GameObject gameHandler = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Game Handler"));
         _gameHandler = gameHandler.GetComponent<GameHandler>();
         player = _gameHandler.GetPlayer();
     }
-
     [TearDown]
     public void TearDown()
     {
